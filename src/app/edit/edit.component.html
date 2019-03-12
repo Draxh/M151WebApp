@@ -1,0 +1,19 @@
+<div id="mainDivEdit">
+    <label>To do name</label>
+    <input #toDoName type="text" name="toDoName" value="{{todoItems.name}}">
+
+    <label>Operator</label>
+    <input #operator type="text" name="operator" value="{{todoItems.operator}}">      
+
+    <label>Date</label>
+    <input #date type="text" name="date" value="{{todoItems.date}}">
+
+    <label>Importance</label>
+    <select #importance value="{{todoItems.importance}}" name="importance">
+      <option value="high">High</option>
+      <option value="medium">Medium</option>
+      <option value="low">Low</option>
+    </select>
+  
+    <button type="submit" (click)="onSubmitEdit(toDoName.value, operator.value, date.value, importance.value)">Submit changes</button>
+</div>

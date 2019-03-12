@@ -1,0 +1,19 @@
+<div id="mainDivAdd">
+      <label>To do name</label>
+      <input #toDoName type="text" name="toDoName" placeholder="Cook">
+  
+      <label>Operator</label>
+      <input #operator type="text" name="operator" placeholder="Max Miller">      
+  
+      <label>Date</label>
+      <input #date type="text" name="date" placeholder="02.04.2019 (Format: Day.Month.Year)">
+  
+      <label>Importance</label>
+      <select #importance name="importance">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+    
+      <button type="submit" (click)="onSubmit(toDoName.value, operator.value, date.value, importance.value)">Submit</button>
+</div>

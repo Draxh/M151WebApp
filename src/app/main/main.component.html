@@ -1,0 +1,10 @@
+<div id="mainDivMain">
+
+    <div *ngFor="let Item of todoItems">
+      <p>{{ Item.name }}</p>
+      <button class="editButton" (click)="loadValues(Item.id)">Edit</button>
+      <button class="deleteButton" (click)="delete(Item.id)">Delete</button>
+    </div>
+
+</div>
+
