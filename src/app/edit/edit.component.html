@@ -1,19 +1,22 @@
-<div id="mainDivEdit">
-    <label>To do name</label>
-    <input #toDoName type="text" name="toDoName" value="{{todoItems.name}}">
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <div id="mainDivAdd">
 
-    <label>Operator</label>
-    <input #operator type="text" name="operator" value="{{todoItems.operator}}">      
-
-    <label>Date</label>
-    <input #date type="text" name="date" value="{{todoItems.date}}">
-
-    <label>Importance</label>
-    <select #importance value="{{todoItems.importance}}" name="importance">
-      <option value="high">High</option>
-      <option value="medium">Medium</option>
-      <option value="low">Low</option>
-    </select>
-  
-    <button type="submit" (click)="onSubmitEdit(toDoName.value, operator.value, date.value, importance.value)">Submit changes</button>
-</div>
+        <label>To do name</label>
+        <input type="text" name="Name" #Name="ngModel" [(ngModel)]="todoService.Name" >
+    
+        <label>Operator</label>
+        <input name="Operator" #operator="ngModel" type="text" [(ngModel)]="todoService.Operator" >      
+    
+        <label>Date</label>
+        <input name="Date" type="date" name="date" [(ngModel)]="todoService.Date" >
+    
+        <label>Importance</label>
+        <select name="Importance" #importance="ngModel" [(ngModel)]="todoService.Importance" >
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+      
+        <button type="submit">Submit</button>
+  </div>
+  </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'fk-edit',
@@ -8,18 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
-
-  toDoName: string;
-  toDoDate: string;
-  toDoOperator: string;
-  toDoImportance: string;
-  toDoItem: any[];
   public numb: any;
   public hrefEdit: any = "";
 
   public todoItems : any[];
-  constructor(private todoService : TodoService, private router: Router) {
-  }
+  constructor(private todoService : TodoService, private router: Router) {}
+  
 
 
   ngOnInit() {
@@ -35,17 +30,16 @@ export class EditComponent implements OnInit {
   })
   }
 
-  onSubmitEdit(toDoName, toDoDate, toDoOperator, toDoImportance) {    
-    this.toDoItem = [
-      toDoName,
-      toDoDate,
-      toDoOperator,
-      toDoImportance
-    ];
-    this.todoService.put(this.numb, this.toDoItem).subscribe((items) => {
-      this.todoItems = items;
-    console.log(this.toDoItem)
-  })
+  onSubmit(form: NgForm) {
+    this.todoService.put(this.numb, form.value).subscribe(
+      res => {
+        console.log("Erfolg");
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
 }
-}
+

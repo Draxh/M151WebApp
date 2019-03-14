@@ -1,19 +1,44 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
 <div id="mainDivAdd">
+
       <label>To do name</label>
-      <input #toDoName type="text" name="toDoName" placeholder="Cook">
+      <input type="text" name="Name" #Name="ngModel" [(ngModel)]="todoService.Name" placeholder="Stuff to do">
   
       <label>Operator</label>
-      <input #operator type="text" name="operator" placeholder="Max Miller">      
+      <input name="Operator" #operator="ngModel" type="text" [(ngModel)]="todoService.Operator" placeholder="Max Miller">      
   
       <label>Date</label>
-      <input #date type="text" name="date" placeholder="02.04.2019 (Format: Day.Month.Year)">
+      <input name="Date" type="date" name="date" [(ngModel)]="todoService.Date" placeholder="02.04.2019 (Format: Day.Month.Year)">
   
       <label>Importance</label>
-      <select #importance name="importance">
+      <select name="Importance" #importance="ngModel" [(ngModel)]="todoService.Importance">
         <option value="high">High</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
       </select>
     
-      <button type="submit" (click)="onSubmit(toDoName.value, operator.value, date.value, importance.value)">Submit</button>
+      <button type="submit">Submit</button>
 </div>
+</form>
+
+<!--Create a task-
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <input type="hidden" name="Id" [value]="service.formData.Id">
+  Taskname
+  <div class="form-group btn-primary" role="button">
+    <input name="Name" #Name="ngModel" [(ngModel)]="service.formData.Name" type="text" class="form-control"
+      placeholder="Task (min. 4 characters)" required maxlength="20" minlength="4">
+  </div>
+  <div class="form-group btn-primary" role="button">
+    <input name="Desc" #Desc="ngModel" [(ngModel)]="service.formData.Desc" type="text" class="form-control"
+      placeholder="Describe your task (min. 4 characters)" required maxlength="20" minlength="4">
+  </div>
+  <div class="form-group btn-primary" role="button">
+    <input name="Date" #Date="ngModel" [(ngModel)]="service.formData.Date" type="date" class="form-control">
+  </div>
+  Button
+  <div class="form-group">
+    <button class="btn purple darken-3 btn-block" type="submit" [disabled]="form.invalid">Create task</button>
+    <input class="btn purple darken-3 btn-block" type="reset" value="Reset">
+  </div>
+</form>-->

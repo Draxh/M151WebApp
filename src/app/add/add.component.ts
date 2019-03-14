@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../todo.service';
+import { NgForm } from '@angular/forms';  
 
 @Component({
   selector: 'fk-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent implements OnInit {
 
-  toDoName: string;
-  toDoDate: string;
-  toDoOperator: string;
-  toDoImportance: string;
-  toDoItem: any[];
-  public todoItems : any[];
+export class AddComponent implements OnInit {
 
   constructor(private todoService : TodoService){}
 
@@ -22,16 +17,16 @@ export class AddComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(toDoName, toDoDate, toDoOperator, toDoImportance) {    
-    this.toDoItem = [
-      toDoName,
-      toDoDate,
-      toDoOperator,
-      toDoImportance
-    ];
-    this.todoService.create(this.toDoItem).subscribe((items) => {
-      this.todoItems = items;
-    console.log(this.toDoItem)
-  })
+  onSubmit(form: NgForm) {
+    this.todoService.postTodoItem(form.value).subscribe(
+      res => {
+        console.log("Erfolg");
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  
+  }
 
-}}
+}

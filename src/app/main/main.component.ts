@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { EditComponent } from '../edit/edit.component';
+import { ToDoItem } from '../todo.model';
 
 @Component({
   selector: 'fk-main',
@@ -9,24 +10,22 @@ import { EditComponent } from '../edit/edit.component';
 })
 export class MainComponent implements OnInit {
   public todoItems : any[];
+  dataForm: ToDoItem
   constructor(private todoService : TodoService) {
-    this.todoService.getAll().subscribe((items) => {
-    this.todoItems = items;
-    console.log(this.todoItems);
-    })
    }
 
-  ngOnInit() {
+  ngOnInit() {   
+    
+    this.todoService.getAll().subscribe((items) => {
+      this.todoItems = items;
+      console.log(this.todoItems);
+      })
   }
 
   delete(id){
     this.todoService.delete(id);
     alert("Task deleted successfully");
     window.location.reload();
-  }  
-
-  loadValues(id){
-    self.location.href='edit/' + id;
-  }
+  } 
 
 }

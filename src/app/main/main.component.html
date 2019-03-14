@@ -1,8 +1,8 @@
 <div id="mainDivMain">
 
     <div *ngFor="let Item of todoItems">
-      <p>{{ Item.name }}</p>
-      <button class="editButton" (click)="loadValues(Item.id)">Edit</button>
+      <p>{{ Item.operator }} has to do: {{ Item.name }} | {{ Item.importance }}</p>
+      <button class="editButton" routerLink="/edit/{{Item.id}}">Edit</button>
       <button class="deleteButton" (click)="delete(Item.id)">Delete</button>
     </div>
 
