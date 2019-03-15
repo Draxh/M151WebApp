@@ -10,7 +10,7 @@ import { TodoService } from '../todo.service';
 export class SearchComponent implements OnInit {
 
   public todoItems : any[];
-  public usersToSearch : any[];
+  usersToSearch = [];
   dataForm: ToDoItem;
   counter: number = 0;
   name;
@@ -26,16 +26,14 @@ export class SearchComponent implements OnInit {
 
   }
 
-  searchUser(){
-
-   this.todoItems.forEach(item => {  
-   
-      console.log(name);
-      if (item.operator == name) {
+  onChange(param) {
+    this.usersToSearch = [];
+    this.todoItems.forEach((item) => {
+      if (item.operator === param) {
         this.usersToSearch.push(item);
       }
-    });    
-  };
+    });
+  }
 
 }
 

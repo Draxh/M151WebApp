@@ -1,7 +1,7 @@
 <div id="mainDivSearch">
 
   <label>To do name</label>
-  <input type="text" name="Name" placeholder="....." [(ngModel)]="name" (ngModelChange)="searchUser()">
+  <input type="text" name="Name" placeholder="....." #search [(ngModel)]="searchString" (input)="onChange(search.value)">
 
   <div *ngFor="let Item of usersToSearch">
         <p>{{ Item.operator }} has to do: {{ Item.name }} | {{ Item.importance }}</p>
