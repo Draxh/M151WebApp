@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToDoItem } from '../todo.model';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'fk-search',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  public todoItems : any[];
+  public usersToSearch : any[];
+  dataForm: ToDoItem;
+  counter: number = 0;
+  name;
 
-  ngOnInit() {
+  constructor(private todoService : TodoService) { }
+
+  ngOnInit() {   
+    
+    this.todoService.getAll().subscribe((items) => {
+      this.todoItems = items;
+      console.log(this.todoItems);
+      })
+
   }
 
+  searchUser(){
+
+   this.todoItems.forEach(item => {  
+   
+      console.log(name);
+      if (item.operator == name) {
+        this.usersToSearch.push(item);
+      }
+    });    
+  };
+
 }
+
