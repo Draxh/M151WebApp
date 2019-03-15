@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../todo.service';
-import { NgForm } from '@angular/forms';  
+import { NgForm } from '@angular/forms'; 
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'fk-add',
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
 
 export class AddComponent implements OnInit {
 
-  constructor(private todoService : TodoService){}
+  constructor(private todoService : TodoService, private router: Router){}
 
   
 
@@ -21,6 +22,7 @@ export class AddComponent implements OnInit {
     this.todoService.postTodoItem(form.value).subscribe(
       res => {
         console.log("Erfolg");
+          this.router.navigateByUrl('/home');
       },
       err => {
         console.log(err);

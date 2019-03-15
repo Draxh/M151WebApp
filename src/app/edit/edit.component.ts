@@ -31,6 +31,7 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    console.log(form.value);
     this.todoService.put(this.numb, form.value).subscribe(
       res => {
         console.log("Erfolg");
